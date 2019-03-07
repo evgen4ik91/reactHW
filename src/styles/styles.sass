@@ -1,0 +1,53 @@
+@import normalize
+
+/* grid */
+.container
+  max-width: 700px
+  margin: 0 auto
+  padding-left: 16px
+  padding-right: 16px
+  &.fluid
+    max-width: none
+    padding-left: 8px
+    padding-right: 8px
+.row
+  display: flex
+  flex-wrap: wrap
+  margin-left: -8px
+  margin-right: -8px
+.col
+  padding-left: 8px
+  padding-right: 8px
+
+/* main styles */
+html
+  background-color: #008EBB
+body 
+  *
+    box-sizing: border-box
+    &:focus
+      outline: none
+  &.move-horizont
+    cursor: ew-resize
+#app
+  min-height: 100vh
+  background-image: linear-gradient(to bottom, #008EBB, #00CBE0)
+  background-size: 100%
+  position: relative
+  font-family: 'Titillium Web', sans-serif
+  font-size: 16px
+  color: #333
+.bright-title
+  font-size: 14px
+  text-transform: uppercase
+  opacity: 0.7
+.bg-contain
+  background-position: center
+  background-repeat: no-repeat
+  background-size: contain
+.bg-cover
+  background-position: center
+  background-repeat: no-repeat
+  background-size: cover
+
+@import responsive

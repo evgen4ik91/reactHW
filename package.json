@@ -1,0 +1,19 @@
+{
+  "name": "reacthw",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/evgen4ik91/reactHW.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/evgen4ik91/reactHW/issues"
+  },
+  "homepage": "https://github.com/evgen4ik91/reactHW#readme"
+}

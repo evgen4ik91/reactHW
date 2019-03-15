@@ -1,11 +1,9 @@
-const webpack = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: [
-    'react-hot-loader/patch',
     './src/index.js'
   ],
   module: {
@@ -48,17 +46,11 @@ module.exports = {
       template: './src/index.html',
       filename: 'index.html'
     }),
-    new webpack.HotModuleReplacementPlugin(),
     new ExtractTextPlugin({filename: 'style.css'}),
     new CopyWebpackPlugin([
       {from:'./src/images',to:'images'}
     ])
-  ],
-  devServer: {
-    contentBase: './dist',
-    hot: true,
-    port: 8081
-  }
+  ]
 };
 
   

@@ -33,6 +33,7 @@ export class SearchSelector extends React.Component {
         })
         return  (
             <ul className="search-selector">
+                <li className="search-selector__title">Search by</li>
                 {items}
             </ul>
         )

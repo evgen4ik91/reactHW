@@ -8,7 +8,7 @@ export class Header extends React.Component {
     render() {
       return  (<header className="header">
                     <div className="container">
-                        <h1 className="header__title">NETFLIXroulette</h1>
+                        <h1 className="header__title"><span>NETFLIX</span>roulette</h1>
                         {this.props.children}
                     </div>
               </header>)

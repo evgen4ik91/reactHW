@@ -1,0 +1,31 @@
+.movie-item
+    color: inherit
+    display: block
+    height: 0
+    padding-bottom: 140%
+    position: relative
+    text-decoration: none
+    &__info
+        background-image: linear-gradient(to bottom, rgba(0, 142, 187,0), rgba(0, 142, 187,1))
+        bottom: 0
+        display: flex
+        justify-content: space-between
+        left: 0
+        padding: 40% 10px 10px
+        position: absolute
+        right: 0
+    &__title
+        color: #fff
+        font-size: 18px
+        margin: 0
+    &__genre
+        color: #fff
+        font-size: 14px
+        margin: 8px 0 0
+    &__year
+        color: #fff
+        font-size: 16px
+        margin: 0 0 0 10px
+    &:hover
+        .movie-item__info
+            background-image: linear-gradient(to bottom, rgba(255, 127, 80,0), rgba(255, 127, 80,1))

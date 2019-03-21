@@ -3,7 +3,7 @@
 /* grid */
 .container
   margin: 0 auto
-  max-width: 700px
+  max-width: 1024px
   padding-left: 16px
   padding-right: 16px
   &.fluid
@@ -15,6 +15,10 @@
   flex-wrap: wrap
   margin-left: -8px
   margin-right: -8px
+  &.align
+    align-items: center
+  &.justify
+    justify-content: space-between
 .col
   padding-left: 8px
   padding-right: 8px
@@ -27,20 +31,19 @@ body
     box-sizing: border-box
     &:focus
       outline: none
-  &.move-horizont
-    cursor: ew-resize
+
 #app
+
   background-image: linear-gradient(to bottom, #008EBB, #00CBE0)
   background-size: 100%
   color: #333
+  display: flex
+  justify-content: space-between
+  flex-direction: column
   font-family: 'Titillium Web', sans-serif
   font-size: 16px
   min-height: 100vh
   position: relative
-.bright-title
-  font-size: 14px
-  opacity: 0.7
-  text-transform: uppercase
 .bg-contain
   background-position: center
   background-repeat: no-repeat
@@ -49,5 +52,21 @@ body
   background-position: center
   background-repeat: no-repeat
   background-size: cover
+.btn-main
+  background-color: coral
+  border: none
+  color: #fff
+  cursor: pointer
+  display: inline-block
+  padding: 4px 6px
+  &.lg
+    padding: 6px 20px
+  &:hover
+    background-color: chocolate
+
 
 @import responsive
+@import '../components/header/header.sass'
+@import '../components/footer/footer.sass'
+@import '../components/search-panel/search-panel.sass'
+@import '../components/search-selector/search-selector.sass'

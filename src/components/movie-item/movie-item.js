@@ -1,4 +1,5 @@
 import React from 'react';
+import './movie-item.sass';
 
 export class MovieItem extends React.Component {
     constructor(props) {

@@ -1,5 +1,6 @@
 import React from 'react';
 import { SearchSelector } from '../search-selector/search-selector'
+import './search-panel.sass';
 
 export class SearchPanel extends React.Component {
     constructor(props) {

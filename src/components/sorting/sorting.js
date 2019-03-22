@@ -1,5 +1,6 @@
 import React from 'react';
 import CONST from '../../constants';
+import './sorting.sass';
 
 export class Sorting extends React.Component {
     constructor(props) {

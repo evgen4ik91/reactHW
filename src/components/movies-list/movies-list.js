@@ -1,6 +1,7 @@
 import React from 'react';
 import CONST from '../../constants';
 import { MovieItem } from '../movie-item/movie-item';
+import './movies-list.sass';
 
 export class MoviesList extends React.Component {
     constructor(props) {

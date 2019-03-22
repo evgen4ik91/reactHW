@@ -1,5 +1,6 @@
 import React from 'react';
-import CONST from '../../constants'
+import CONST from '../../constants';
+import './search-selector.sass';
 
 export class SearchSelector extends React.Component {
     constructor(props) {

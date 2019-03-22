@@ -22,7 +22,7 @@ export class App extends React.Component {
                     <SearchPanel/>
                 </Header>
                 <MoviesList>
-                    <InfoText text={CONST.moviesList.length} searchByGenre="0"/>
+                    <InfoText text={CONST.moviesList.length} searchByGenre={false}/>
                     <Sorting/>
                 </MoviesList>
                 <Footer/>

@@ -1,11 +1,7 @@
 import React from 'react';
 import './footer.sass';
 
-export class Footer extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
+export class Footer extends React.PureComponent {
     render() {
       return  (<footer className="footer">
                     <div className="container">

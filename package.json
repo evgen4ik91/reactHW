@@ -7,8 +7,8 @@
     "start": "webpack-dev-server --config ./webpack.dev.js",
     "build": "webpack --config ./webpack.prod.js",
     "dev-server": "nodemon server.js",
-    "test": "jest --passWithNoTests --updateSnapshot",
-    "test:coverage": "jest --coverage --colors --updateSnapshot"
+    "test": "jest --passWithNoTests --coverage --colors",
+    "testUS": "jest --passWithNoTests --updateSnapshot"
   },
   "repository": {
     "type": "git",

@@ -12,7 +12,7 @@ test('info-text text should match', () => {
 
 test('info-text text should match', () => {
     const component = shallow(
-        <InfoText searchByGenre={false} text={'1'} />,
+        <InfoText searchByGenre={false} text={'1'} />
     );
     
     expect(component.text()).toEqual('1 movies found');

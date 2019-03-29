@@ -1,11 +1,12 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import { Footer } from './footer';
+import { Header } from './header';
 
-test('Footer should render correctly', () => {
+test('Header should contain title', () => {
     const component = renderer.create(
-        <Footer />
+        <Header />
     );
+    
     let tree = component.toJSON();
     expect(tree).toMatchSnapshot();
-})
+});

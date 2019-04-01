@@ -8,7 +8,8 @@
     "build": "webpack --config ./webpack.prod.js",
     "dev-server": "nodemon server.js",
     "test": "jest --passWithNoTests --coverage --colors",
-    "testUS": "jest --passWithNoTests --updateSnapshot"
+    "testUS": "jest --passWithNoTests --updateSnapshot",
+    "cypress": "cypress open"
   },
   "repository": {
     "type": "git",
@@ -31,6 +32,7 @@
     "babel-minify-webpack-plugin": "^0.3.1",
     "copy-webpack-plugin": "^4.5.2",
     "css-loader": "^1.0.0",
+    "cypress": "^3.2.0",
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.11.2",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
@@ -70,6 +72,8 @@
       "^.+\\.js$": "babel-jest",
       ".+\\.(css|sass|scss)$": "jest-transform-css"
     },
-    "setupFilesAfterEnv": ["<rootDir>/src/setupTests.js"]
+    "setupFilesAfterEnv": [
+      "<rootDir>/src/setupTests.js"
+    ]
   }
 }

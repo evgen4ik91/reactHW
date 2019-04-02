@@ -12,7 +12,7 @@ export class MoviesList extends React.Component {
     }
 
     render() {
-        let children = this.props.children ? (
+        const children = this.props.children ? (
             <div className="movies-list__info">
                 <div className="row align justify">
                     {React.Children.map(this.props.children, child => (<div className="col">{React.cloneElement(child)}</div>))}
@@ -20,9 +20,9 @@ export class MoviesList extends React.Component {
             </div>
         ) : '';
         
-        let moviesList = this.state.moviesList;
+        const moviesList = this.state.moviesList;
 
-        let moviesListRendered = moviesList && moviesList.length ? (
+        const moviesListRendered = moviesList && moviesList.length ? (
             <div className="row movies-list__row ">
                 {moviesList.map((item, i) => {
                     return (<div className="col movies-list__item" key={i}>

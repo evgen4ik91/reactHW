@@ -6,6 +6,6 @@ test('SearchSelector should render correctly', () => {
     const component = renderer.create(
         <SearchSelector />
     );
-    let tree = component.toJSON();
+    const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
 })

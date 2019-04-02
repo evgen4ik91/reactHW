@@ -7,7 +7,7 @@ export class MovieItem extends React.Component {
     }
 
     render() {
-        let movie = this.props.movie;
+        const movie = this.props.movie;
         return (
             <a className="movie-item bg-cover" href={`/movies/${movie.id}`} style={{backgroundImage: `url(${movie.imageURL})`}}>
                 <div className="movie-item__info">

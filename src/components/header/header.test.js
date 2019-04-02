@@ -7,6 +7,6 @@ test('Header should render correctly', () => {
         <Header />
     );
     
-    let tree = component.toJSON();
+    const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
 });

@@ -18,8 +18,8 @@ export class Sorting extends React.Component {
     }
 
     render() {
-        let sortingItems = CONST.sortingTypes.map((item, i) => {
-            let itemProp = item.prop;
+        const sortingItems = CONST.sortingTypes.map((item, i) => {
+            const itemProp = item.prop;
             return (
                 <li className="sorting__item" key={i}>
                     <input className="so"

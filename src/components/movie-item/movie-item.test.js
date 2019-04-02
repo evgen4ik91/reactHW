@@ -16,6 +16,6 @@ test('Footer should render correctly', () => {
     const component = renderer.create(
         <MovieItem movie={movieObj} />
     );
-    let tree = component.toJSON();
+    const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
 })

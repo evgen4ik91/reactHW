@@ -6,6 +6,6 @@ test('Footer should render correctly', () => {
     const component = renderer.create(
         <Footer />
     );
-    let tree = component.toJSON();
+    const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
 })

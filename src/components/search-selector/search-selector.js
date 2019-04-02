@@ -18,7 +18,7 @@ export class SearchSelector extends React.Component {
     }
 
     render() {
-        let items = CONST.selectorList.map((item, i) => {
+        const items = CONST.selectorList.map((item, i) => {
             return  (
                 <li className="search-selector__item" key={i}>
                     <input 

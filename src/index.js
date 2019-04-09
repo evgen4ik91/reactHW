@@ -7,7 +7,6 @@ import CONST from './constants';
 
 const store = configureStore({...CONST});
 console.log(store.getState())
-
 ReactDOM.render(
   <Provider store={store}>
     <App />

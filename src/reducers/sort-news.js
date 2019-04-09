@@ -1,7 +1,7 @@
-export default function sortNews(state = 'genre', action) {
+export default function setCurrentSorting(state = '', action) {
   switch (action.type) {
-    case 'SORT_NEWS_LIST':
-      return state
+    case 'SET_CURRENT_SORTING':
+      return action.payload;
     default:
       return state;
   }

@@ -1,24 +1,20 @@
 import React from 'react';
-import CONST from '../../constants';
+import { connect } from 'react-redux';
 import './sorting.sass';
 
-export class Sorting extends React.Component {
+class Sorting extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            currentType: CONST.sortingTypes[0]
-        }
+        
         this.updateSortingType = this.updateSortingType.bind(this);
     }
 
     updateSortingType(e) {
-        this.setState({
-            currentType: e.target.value
-        })
+        this.props.setCurrentSorting(e.target.value);
     }
 
     render() {
-        const sortingItems = CONST.sortingTypes.map((item, i) => {
+        const sortingItems = this.props.sortingTypes.map((item, i) => {
             const itemProp = item.prop;
             return (
                 <li className="sorting__item" key={i}>
@@ -42,3 +38,23 @@ export class Sorting extends React.Component {
         )
     }
 }
+
+const setCurrentSorting = (payload) => {
+    type: 'SET_CURRENT_SORTING',
+    payload
+};
+
+function mapDispatchToProps(state) {
+    return {
+        setCurrentSorting: (currSort) => dispatch(setCurrentSorting(currSort)),
+    }
+}
+
+function mapStateToProps(state) {
+    const { currentSorting }  = state;
+    const { sortingTypes }  = state;
+
+    return { currentSorting, sortingTypes };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Sorting);

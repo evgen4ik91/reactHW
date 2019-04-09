@@ -1,6 +1,6 @@
-export function sortNews(prop) {
+export function setCurrentSorting(payload) {
   return {
-      type: 'SORT_NEWS_LIST',
-      prop
+      type: 'SET_CURRENT_SORTING',
+      payload
   };
 }

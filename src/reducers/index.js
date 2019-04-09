@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
-import sortNews from './sort-news';
+import currentSorting from './sort-news';
 
 export default combineReducers({
-    sortNews
+    currentSorting
 });

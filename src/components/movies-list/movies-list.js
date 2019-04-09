@@ -1,14 +1,11 @@
 import React from 'react';
-import CONST from '../../constants';
+import { connect } from 'react-redux';
 import { MovieItem } from '../movie-item/movie-item';
 import './movies-list.sass';
 
-export class MoviesList extends React.Component {
+class MoviesList extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            moviesList: CONST.moviesList
-        }
     }
 
     render() {
@@ -20,7 +17,7 @@ export class MoviesList extends React.Component {
             </div>
         ) : '';
         
-        const moviesList = this.state.moviesList;
+        const moviesList = this.props.moviesList;
 
         const moviesListRendered = moviesList && moviesList.length ? (
             <div className="row movies-list__row ">
@@ -30,10 +27,11 @@ export class MoviesList extends React.Component {
                     </div>)
                 })}
             </div>
-        ) : (<div className="movies-list__err">
-            <p className="movies-list__err-msg">No films found</p>
-        </div>)
-
+        ) : (
+            <div className="movies-list__err">
+                <p className="movies-list__err-msg">No films found</p>
+            </div>
+        )
         return (
             <div className="movies-list container">
                 {children}
@@ -42,3 +40,11 @@ export class MoviesList extends React.Component {
         )
     }
 }
+
+function mapStateToProps(state) {
+    const { moviesList }  = state;
+
+    return { moviesList };
+}
+
+export default connect(mapStateToProps)(MoviesList);

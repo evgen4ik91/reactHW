@@ -1,5 +1,6 @@
 module.exports = Object.freeze({
     selectorList: ['title', 'genre'],
+    currentSorting: 'year',
     sortingTypes: [{
         label: 'release date',
         prop: 'year'

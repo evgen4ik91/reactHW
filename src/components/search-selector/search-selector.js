@@ -1,20 +1,16 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import CONST from '../../constants';
 import './search-selector.sass';
 
-export class SearchSelector extends React.Component {
+class SearchSelector extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            currentType: CONST.selectorList[0]
-        }
         this.updateSearchType = this.updateSearchType.bind(this);
     }
 
     updateSearchType(e) {
-        this.setState({
-            currentType: e.target.value
-        })
+        this.props.setSearchBy(e.target.value);
     }
 
     render() {
@@ -28,7 +24,7 @@ export class SearchSelector extends React.Component {
                         value={item}
                         name="search-type" 
                         type="radio"
-                        defaultChecked={i === 0}/>
+                        defaultChecked={item === this.props.searchBy}/>
                     <label htmlFor={`search-type-${item}`} className="search-selector__label">{item}</label>
                 </li>
             )
@@ -41,3 +37,22 @@ export class SearchSelector extends React.Component {
         )
     }
 }
+
+const setSearchBy = (payload) => ({
+    type: 'SET_SEARCH_BY',
+    payload
+});
+
+function mapDispatchToProps(dispatch) {
+    return {
+        setSearchBy: (prop) => dispatch(setSearchBy(prop)),
+    }
+}
+
+function mapStateToProps(state) {
+    const { searchBy }  = state;
+
+    return { searchBy };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SearchSelector);

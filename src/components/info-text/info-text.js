@@ -1,6 +1,18 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import './info-text.sass';
 	
-const InfoText = (props) => <p className="info-text">{props.searchByGenre ? `Films by ${props.text} genre` : `${props.text} movies found`}</p>
+const InfoText = (props) => {
+    let text = props.moviesList ? `${props.moviesList.length} movies found` : ``;
+    if (props.searchByGenre) text = `Films by ${props.text} genre`
 
-export default InfoText;
+    return (<p className="info-text">{text}</p>)
+}
+
+function mapStateToProps(state) {
+    const { moviesList }  = state;
+
+    return { moviesList };
+}
+
+export default connect(mapStateToProps)(InfoText);

@@ -2,10 +2,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 import './sorting.sass';
 
+import CONST from '../../constants';
+
 class Sorting extends React.Component {
     constructor(props) {
         super(props);
-        
         this.updateSortingType = this.updateSortingType.bind(this);
     }
 
@@ -14,37 +15,41 @@ class Sorting extends React.Component {
     }
 
     render() {
-        const sortingItems = this.props.sortingTypes.map((item, i) => {
-            const itemProp = item.prop;
+        if (CONST.sortingTypes) {
+            const sortingItems = CONST.sortingTypes.map((item, i) => {
+                const itemProp = item.prop;
+                return (
+                    <li className="sorting__item" key={i}>
+                        <input className="so"
+                            id={`sorting-type-${itemProp}`}
+                            className="sorting__inp"
+                            onChange={this.updateSortingType}
+                            value={itemProp}
+                            name="sorting-type" 
+                            type="radio"
+                            defaultChecked={itemProp === this.props.currentSorting}/>
+                        <label htmlFor={`sorting-type-${itemProp}`} className="sorting__label">{item.label}</label>
+                    </li>
+                )
+            });
             return (
-                <li className="sorting__item" key={i}>
-                    <input className="so"
-                        id={`sorting-type-${itemProp}`}
-                        className="sorting__inp"
-                        onChange={this.updateSortingType}
-                        value={itemProp}
-                        name="sorting-type" 
-                        type="radio"
-                        defaultChecked={i === 0}/>
-                    <label htmlFor={`sorting-type-${itemProp}`} className="sorting__label">{item.label}</label>
-                </li>
-            )
-        })
-        return (
-            <ul className="sorting">
-                <li className="sorting__title">Sort by:</li>
-                {sortingItems}
-            </ul>
-        )
+                <ul className="sorting">
+                    <li className="sorting__title">Sort by:</li>
+                    {sortingItems}
+                </ul>
+            );
+        } else {
+            return '';
+        }
     }
 }
 
-const setCurrentSorting = (payload) => {
+const setCurrentSorting = (payload) => ({
     type: 'SET_CURRENT_SORTING',
     payload
-};
+});
 
-function mapDispatchToProps(state) {
+function mapDispatchToProps(dispatch) {
     return {
         setCurrentSorting: (currSort) => dispatch(setCurrentSorting(currSort)),
     }
@@ -52,9 +57,8 @@ function mapDispatchToProps(state) {
 
 function mapStateToProps(state) {
     const { currentSorting }  = state;
-    const { sortingTypes }  = state;
 
-    return { currentSorting, sortingTypes };
+    return { currentSorting };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Sorting);

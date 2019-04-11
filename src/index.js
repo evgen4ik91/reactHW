@@ -3,10 +3,12 @@ import ReactDOM from 'react-dom';
 import {App} from './app';
 import { Provider } from 'react-redux';
 import configureStore from './store';
-import CONST from './constants';
+import 'babel-polyfill';
 
-const store = configureStore({...CONST});
-console.log(store.getState())
+import initialState from './initialState';
+
+const store = configureStore({...initialState});
+
 ReactDOM.render(
   <Provider store={store}>
     <App />

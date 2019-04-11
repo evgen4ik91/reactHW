@@ -3,9 +3,18 @@ import { connect } from 'react-redux';
 import { MovieItem } from '../movie-item/movie-item';
 import './movies-list.sass';
 
+import { sortMovies } from '../../functions';
+import { Fetcher } from '../../fetcher';
+
 class MoviesList extends React.Component {
     constructor(props) {
         super(props);
+    }
+
+    componentDidMount() {
+        Fetcher().then(res => {
+            if(res.data) this.props.setMoviesList(res.data);
+        })
     }
 
     render() {
@@ -17,7 +26,7 @@ class MoviesList extends React.Component {
             </div>
         ) : '';
         
-        const moviesList = this.props.moviesList;
+        const moviesList = sortMovies(this.props.moviesList, this.props.currentSorting);
 
         const moviesListRendered = moviesList && moviesList.length ? (
             <div className="row movies-list__row ">
@@ -41,10 +50,22 @@ class MoviesList extends React.Component {
     }
 }
 
-function mapStateToProps(state) {
-    const { moviesList }  = state;
+const setMoviesList = (payload) => ({
+    type: 'SET_MOVIES_LIST',
+    payload
+});
 
-    return { moviesList };
+function mapDispatchToProps(dispatch) {
+    return {
+        setMoviesList: (list) => dispatch(setMoviesList(list)),
+    }
 }
 
-export default connect(mapStateToProps)(MoviesList);
+function mapStateToProps(state) {
+    const { moviesList }  = state;
+    const { currentSorting }  = state;
+
+    return { moviesList, currentSorting };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(MoviesList);

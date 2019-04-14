@@ -2,16 +2,32 @@ import React from 'react';
 import { connect } from 'react-redux';
 import SearchSelector from '../search-selector/search-selector'
 import './search-panel.sass';
+import { Fetcher } from '../../fetcher';
 
 class SearchPanel extends React.Component {
     constructor(props) {
         super(props);
 
         this.keyUpHandler = this.keyUpHandler.bind(this);
+        this.submitHandler = this.submitHandler.bind(this);
+    }
+
+    getMovies(searchStr, searchBy) {
+        Fetcher(searchStr, searchBy).then(res => {
+            if(res.data) this.props.setMoviesList(res.data);
+        })
+    }
+
+    componentDidMount() {
+        this.getMovies();
     }
 
     keyUpHandler(e) {
         this.props.setSearchQuery(e.target.value);
+    }
+
+    submitHandler() {
+        this.getMovies(this.props.searchQuery, this.props.searchBy);
     }
 
     render() {
@@ -29,7 +45,7 @@ class SearchPanel extends React.Component {
                         <SearchSelector/>
                     </div>
                     <div className="col">
-                        <button className="btn-main lg">Submit</button>
+                        <button className="btn-main lg" onClick={this.submitHandler}>Submit</button>
                     </div>
                 </div>
             </div>
@@ -42,9 +58,15 @@ const setSearchQuery = (payload) => ({
     payload
 });
 
+const setMoviesList = (payload) => ({
+    type: 'SET_MOVIES_LIST',
+    payload
+});
+
 function mapDispatchToProps(dispatch) {
     return {
         setSearchQuery: str => dispatch(setSearchQuery(str)),
+        setMoviesList: (list) => dispatch(setMoviesList(list)),
     }
 }
 

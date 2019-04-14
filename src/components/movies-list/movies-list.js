@@ -4,17 +4,10 @@ import { MovieItem } from '../movie-item/movie-item';
 import './movies-list.sass';
 
 import { sortMovies } from '../../functions';
-import { Fetcher } from '../../fetcher';
 
 class MoviesList extends React.Component {
     constructor(props) {
         super(props);
-    }
-
-    componentDidMount() {
-        Fetcher().then(res => {
-            if(res.data) this.props.setMoviesList(res.data);
-        })
     }
 
     render() {
@@ -50,17 +43,6 @@ class MoviesList extends React.Component {
     }
 }
 
-const setMoviesList = (payload) => ({
-    type: 'SET_MOVIES_LIST',
-    payload
-});
-
-function mapDispatchToProps(dispatch) {
-    return {
-        setMoviesList: (list) => dispatch(setMoviesList(list)),
-    }
-}
-
 function mapStateToProps(state) {
     const { moviesList }  = state;
     const { currentSorting }  = state;
@@ -68,4 +50,4 @@ function mapStateToProps(state) {
     return { moviesList, currentSorting };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(MoviesList);
+export default connect(mapStateToProps)(MoviesList);

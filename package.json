@@ -71,6 +71,7 @@
     "react-dom": "@hot-loader/react-dom"
   },
   "jest": {
+    "testPathIgnorePatterns": ["cypress"],
     "transform": {
       "^.+\\.js$": "babel-jest",
       ".+\\.(css|sass|scss)$": "jest-transform-css"

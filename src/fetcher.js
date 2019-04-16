@@ -12,6 +12,3 @@ async function Fetcher(searchStr = '', searchBy, limit) {
 }
 
 module.exports.Fetcher = Fetcher;
-
-    
-    

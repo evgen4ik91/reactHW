@@ -1,12 +1,28 @@
-import { combineReducers } from 'redux';
-import currentSorting from './sort-news';
-import moviesList from './set-movies';
-import searchBy from './set-search-by';
-import searchQuery from './set-search-query';
+import initialState from '../initialState';
 
-export default combineReducers({
-    currentSorting,
-    moviesList,
-    searchBy,
-    searchQuery
-});
+export default function Reducer(state = initialState, action) {
+    switch (action.type) {
+        case 'SET_SEARCH_QUERY':
+            return {
+                ...state,
+                searchQuery: action.payload
+            };
+        case 'SET_SEARCH_BY':
+            return {
+                ...state,
+                searchBy: action.payload
+            };
+        case 'SET_MOVIES_LIST':
+            return {
+                ...state,
+                moviesList: action.payload
+            };
+        case 'SET_CURRENT_SORTING':
+            return {
+                ...state,
+                currentSorting: action.payload
+            };
+        default:
+            return state;
+    }
+}

@@ -19,7 +19,7 @@ class SearchPanel extends React.Component {
     }
 
     componentDidMount() {
-        this.getMovies();
+        if (!this.props.moviesList.length)this.getMovies();
     }
 
     keyUpHandler(e) {
@@ -73,8 +73,9 @@ function mapDispatchToProps(dispatch) {
 function mapStateToProps(state) {
     const { searchBy }  = state;
     const { searchQuery }  = state;
+    const { moviesList }  = state;
 
-    return { searchBy, searchQuery };
+    return { searchBy, searchQuery, moviesList };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(SearchPanel);

@@ -4,7 +4,7 @@ import InfoText from './info-text';
 
 test('info-text text should match', () => {
     const component = shallow(
-        <InfoText searchByGenre={true} text={'comedy'} />,
+        <InfoText searchByGenre={true} moviesList={[1,2]} text={'comedy'} />,
     );
     
     expect(component.text()).toEqual('Films by comedy genre');

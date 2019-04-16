@@ -1,4 +1,4 @@
-import setMoviesList from './set-movies';
+import setMoviesList from '../set-movies';
 
 test("set movies", () => {
 	const payload = [];

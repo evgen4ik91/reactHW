@@ -62,7 +62,7 @@
     "react": "^16.8.5",
     "react-dom": "^16.8.5",
     "react-redux": "^5.0.7",
-    "react-router": "^4.3.1",
+    "react-router-dom": "^5.0.0",
     "redux": "^4.0.1",
     "redux-persist": "^5.10.0",
     "redux-thunk": "^2.3.0"
@@ -71,7 +71,9 @@
     "react-dom": "@hot-loader/react-dom"
   },
   "jest": {
-    "testPathIgnorePatterns": ["cypress"],
+    "testPathIgnorePatterns": [
+      "cypress"
+    ],
     "transform": {
       "^.+\\.js$": "babel-jest",
       ".+\\.(css|sass|scss)$": "jest-transform-css"

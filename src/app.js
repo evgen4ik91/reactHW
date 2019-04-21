@@ -1,12 +1,14 @@
 import React from 'react';
+import { Switch, Route } from 'react-router-dom';
 import "./styles/styles.sass";
-import { ErrorBoundary } from './components/error-boundary/error-boundary'
-import Header from './components/header/header'
-import Footer from './components/footer/footer'
-import SearchPanel from './components/search-panel/search-panel'
-import MoviesList from './components/movies-list/movies-list'
-import InfoText from './components/info-text/info-text'
-import Sorting from './components/sorting/sorting'
+import { ErrorBoundary } from './components/error-boundary/error-boundary';
+import Header from './components/header/header';
+import Footer from './components/footer/footer';
+import SearchPanel from './components/search-panel/search-panel';
+import MoviesList from './components/movies-list/movies-list';
+import MovieDetails from './components/movie-details/movie-details';
+import InfoText from './components/info-text/info-text';
+import Sorting from './components/sorting/sorting';
 
 export class App extends React.Component {
     constructor(props) {
@@ -17,11 +19,15 @@ export class App extends React.Component {
         return (
             <ErrorBoundary>
                 <Header>
-                    <SearchPanel/>
+                    <Switch>
+                        <Route exact path='/' component={SearchPanel}/>
+                        <Route path='/movies/:id' component={MovieDetails}/>
+                        <Route exact path='*' component={'<div>404</div>'}/>
+                    </Switch>
                 </Header>
                 <MoviesList>
                     <InfoText/>
-                    <Sorting/>
+                    <Route exact path='/' component={Sorting}/>
                 </MoviesList>
                 <Footer/>
             </ErrorBoundary>

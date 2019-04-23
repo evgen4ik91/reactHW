@@ -11,6 +11,7 @@ class SearchPanel extends React.Component {
         this.keyUpHandler = this.keyUpHandler.bind(this);
         this.keyDownHandler = this.keyDownHandler.bind(this);
         this.submitHandler = this.submitHandler.bind(this);
+        this.getMovies = this.getMovies.bind(this);
     }
 
     getMovies(searchStr, searchBy) {
@@ -41,6 +42,7 @@ class SearchPanel extends React.Component {
     }
 
     submitHandler() {
+        this.props.history.push(`/search/${this.props.searchQuery}`);
         this.getMovies(this.props.searchQuery, this.props.searchBy);
     }
 

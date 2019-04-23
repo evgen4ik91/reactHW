@@ -9,6 +9,7 @@ import MoviesList from './components/movies-list/movies-list';
 import MovieDetails from './components/movie-details/movie-details';
 import InfoText from './components/info-text/info-text';
 import Sorting from './components/sorting/sorting';
+import Page404 from './components/page404/page404';
 
 export class App extends React.Component {
     constructor(props) {
@@ -22,7 +23,7 @@ export class App extends React.Component {
                     <Switch>
                         <Route exact path='/' component={SearchPanel}/>
                         <Route path='/movies/:id' component={MovieDetails}/>
-                        <Route exact path='*' component={'<div>404</div>'}/>
+                        <Route exact path='*' component={Page404}/>
                     </Switch>
                 </Header>
                 <MoviesList>

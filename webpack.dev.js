@@ -13,7 +13,8 @@ module.exports = merge(common, {
     devServer: {
         contentBase: './dist',
         hot: true,
-        port: 8081
+        port: 8081,
+        historyApiFallback: true,
     },
     resolve: {
         alias: {

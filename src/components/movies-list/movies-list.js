@@ -19,12 +19,13 @@ class MoviesList extends React.Component {
             </div>
         ) : '';
         
-        const moviesList = sortMovies(this.props.moviesList, this.props.currentSorting);
+        const genreMode = this.props.relatedList.length;
+        let moviesList = genreMode ? this.props.relatedList : sortMovies(this.props.moviesList, this.props.currentSorting);
 
         const moviesListRendered = moviesList && moviesList.length ? (
-            <div className="row movies-list__row ">
+            <div className={`row movies-list__row ${genreMode ? 'genres' : ''}`}>
                 {moviesList.map((item, i) => {
-                    return (<div className="col movies-list__item" key={i}>
+                    return (<div className='col movies-list__item' key={i}>
                         <MovieItem movie={item} />
                     </div>)
                 })}
@@ -46,8 +47,9 @@ class MoviesList extends React.Component {
 function mapStateToProps(state) {
     const { moviesList }  = state;
     const { currentSorting }  = state;
+    const { relatedList }  = state;
 
-    return { moviesList, currentSorting };
+    return { moviesList, currentSorting, relatedList };
 }
 
 export default connect(mapStateToProps)(MoviesList);

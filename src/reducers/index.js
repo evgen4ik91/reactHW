@@ -22,6 +22,16 @@ export default function Reducer(state = initialState, action) {
                 ...state,
                 currentSorting: action.payload
             };
+        case 'SET_RELATED_GENRE':
+            return {
+                ...state,
+                relatedGenre: action.payload
+            };
+        case 'SET_RELATED_LIST':
+            return {
+                ...state,
+                relatedList: action.payload
+            };
         default:
             return state;
     }

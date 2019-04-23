@@ -16,7 +16,7 @@ export class MovieItem extends React.Component {
                 <div className="movie-item__info">
                     <div className="movie-item__info-main">
                         <p className="movie-item__title">{movie.title}</p>
-                        <p className="movie-item__genre">{movie.genres.map((genre,i) => (i === 0 ? '' : ', ') + genre)}</p>
+                        <p className="movie-item__genre">{movie.genres.join(', ')}</p>
                     </div>
                     <p className="movie-item__year">{getYear(movie.release_date)}</p>
                 </div>

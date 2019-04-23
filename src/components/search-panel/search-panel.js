@@ -19,7 +19,9 @@ class SearchPanel extends React.Component {
     }
 
     componentDidMount() {
-        if (!this.props.moviesList.length)this.getMovies();
+        if (!this.props.moviesList.length) this.getMovies();
+        this.props.setRelatedList([]);
+        this.props.setRelatedGenre('');
     }
 
     keyUpHandler(e) {
@@ -53,6 +55,16 @@ class SearchPanel extends React.Component {
     }
 }
 
+const setRelatedList = (payload) => ({
+    type: 'SET_RELATED_LIST',
+    payload
+});
+
+const setRelatedGenre = (payload) => ({
+    type: 'SET_RELATED_GENRE',
+    payload
+});
+
 const setSearchQuery = (payload) => ({
     type: 'SET_SEARCH_QUERY',
     payload
@@ -65,6 +77,8 @@ const setMoviesList = (payload) => ({
 
 function mapDispatchToProps(dispatch) {
     return {
+        setRelatedList: list => dispatch(setRelatedList(list)),
+        setRelatedGenre: str => dispatch(setRelatedGenre(str)),
         setSearchQuery: str => dispatch(setSearchQuery(str)),
         setMoviesList: (list) => dispatch(setMoviesList(list)),
     }

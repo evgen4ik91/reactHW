@@ -11,7 +11,6 @@ class SearchPanel extends React.Component {
         this.keyUpHandler = this.keyUpHandler.bind(this);
         this.keyDownHandler = this.keyDownHandler.bind(this);
         this.submitHandler = this.submitHandler.bind(this);
-        this.getMovies = this.getMovies.bind(this);
     }
 
     getMovies(searchStr, searchBy) {
@@ -23,7 +22,7 @@ class SearchPanel extends React.Component {
     updateComp() {
         let searchReq = this.props.match.params.req;
         this.props.setSearchQuery(searchReq || '');
-        if (searchReq) this.getMovies(searchReq, 'title');
+        if (searchReq) this.getMovies(searchReq, this.props.searchBy);
         else this.getMovies();
     }
 
@@ -34,6 +33,10 @@ class SearchPanel extends React.Component {
         this.props.setRelatedGenre('');
     }
 
+    componentDidUpdate(prevProps) {
+        if (this.props.location !== prevProps.location) this.updateComp();
+      }
+
     keyUpHandler(e) {
         this.props.setSearchQuery(e.target.value);
     }
@@ -42,8 +45,10 @@ class SearchPanel extends React.Component {
     }
 
     submitHandler() {
-        this.props.history.push(`/search/${this.props.searchQuery}`);
-        this.getMovies(this.props.searchQuery, this.props.searchBy);
+        const searchQuery = this.props.searchQuery;
+        if (searchQuery.length) {
+            this.props.history.push(`/search/${searchQuery}`);
+        }
     }
 
     render() {
@@ -62,7 +67,7 @@ class SearchPanel extends React.Component {
                         <SearchSelector/>
                     </div>
                     <div className="col">
-                        <button className="btn-main lg" onClick={this.submitHandler}>Submit</button>
+                        <button className="btn-main lg" onClick={this.submitHandler} disabled={!this.props.searchQuery.length}>Submit</button>
                     </div>
                 </div>
             </div>

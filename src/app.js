@@ -22,6 +22,7 @@ export class App extends React.Component {
                 <Header>
                     <Switch>
                         <Route exact path='/' component={SearchPanel}/>
+                        <Route path='/search/:req' component={SearchPanel}/>
                         <Route path='/movies/:id' component={MovieDetails}/>
                         <Route exact path='*' component={Page404}/>
                     </Switch>

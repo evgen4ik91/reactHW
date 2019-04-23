@@ -9,6 +9,7 @@ class SearchPanel extends React.Component {
         super(props);
 
         this.keyUpHandler = this.keyUpHandler.bind(this);
+        this.keyDownHandler = this.keyDownHandler.bind(this);
         this.submitHandler = this.submitHandler.bind(this);
     }
 
@@ -18,14 +19,25 @@ class SearchPanel extends React.Component {
         })
     }
 
+    updateComp() {
+        let searchReq = this.props.match.params.req;
+        this.props.setSearchQuery(searchReq || '');
+        if (searchReq) this.getMovies(searchReq, 'title');
+        else this.getMovies();
+    }
+
     componentDidMount() {
-        if (!this.props.moviesList.length) this.getMovies();
+        this.updateComp();
+        
         this.props.setRelatedList([]);
         this.props.setRelatedGenre('');
     }
 
     keyUpHandler(e) {
         this.props.setSearchQuery(e.target.value);
+    }
+    keyDownHandler(e) {
+        if (e.key === 'Enter') this.submitHandler();
     }
 
     submitHandler() {
@@ -38,7 +50,8 @@ class SearchPanel extends React.Component {
                 <p className="search__title">Find your movie</p>
                 <input
                     className="search__field" 
-                    onKeyUp={this.keyUpHandler} 
+                    onKeyUp={this.keyUpHandler}
+                    onKeyDown={this.keyDownHandler} 
                     defaultValue={this.props.searchQuery}
                     placeholder="Search..."
                 />

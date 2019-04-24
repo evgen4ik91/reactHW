@@ -27,7 +27,7 @@ class SearchPanel extends React.Component {
     }
 
     componentDidMount() {
-        this.updateComp();
+        if (!this.props.moviesList.length) this.updateComp();
         
         this.props.setRelatedList([]);
         this.props.setRelatedGenre('');
@@ -35,11 +35,12 @@ class SearchPanel extends React.Component {
 
     componentDidUpdate(prevProps) {
         if (this.props.location !== prevProps.location) this.updateComp();
-      }
+    }
 
     keyUpHandler(e) {
         this.props.setSearchQuery(e.target.value);
     }
+
     keyDownHandler(e) {
         if (e.key === 'Enter') this.submitHandler();
     }

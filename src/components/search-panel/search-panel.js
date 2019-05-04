@@ -27,14 +27,15 @@ class SearchPanel extends React.Component {
     }
 
     componentDidMount() {
-        if (!this.props.moviesList.length) this.updateComp();
-        
+        if (this.props.location.pathname !== '/') this.updateComp();
+        else if (this.props.moviesList.length === 0) this.updateComp();
+
         this.props.setRelatedList([]);
         this.props.setRelatedGenre('');
     }
 
     componentDidUpdate(prevProps) {
-        if (this.props.location !== prevProps.location) this.updateComp();
+        if (this.props.location.pathname !== prevProps.location.pathname) this.updateComp();
     }
 
     keyUpHandler(e) {

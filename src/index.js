@@ -1,11 +1,11 @@
 import React from 'react';
-import { render } from 'react-dom';
+import { hydrate } from 'react-dom';
 
 import Root from './root';
 
 const root = (<Root/>);
 
-render(
+hydrate(
   root,
   document.getElementById('app')
 );

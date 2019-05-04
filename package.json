@@ -6,6 +6,7 @@
   "scripts": {
     "start": "webpack-dev-server --config ./webpack.dev.js",
     "build": "webpack --config ./webpack.prod.js",
+    "ssr": "webpack --config ./webpack.prod.js",
     "dev-server": "nodemon server.js",
     "test": "jest --passWithNoTests --coverage --colors",
     "testUS": "jest --passWithNoTests --updateSnapshot",

@@ -40,12 +40,6 @@ module.exports = {
     filename: 'bundle.js'
   },
   plugins: [
-    new HtmlWebpackPlugin({
-      inject: false,
-      hash: true,
-      template: './src/index.html',
-      filename: 'index.html'
-    }),
     new ExtractTextPlugin({filename: 'style.css'}),
     new CopyWebpackPlugin([
       {from:'./src/images',to:'images'}

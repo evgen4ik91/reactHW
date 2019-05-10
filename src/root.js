@@ -2,18 +2,14 @@ import React from 'react';
 import { hot } from 'react-hot-loader';
 import {App} from './app';
 import { Provider } from 'react-redux';
-import { persistor, store } from './store';
-import { PersistGate } from 'redux-persist/lib/integration/react';
-import { BrowserRouter } from 'react-router-dom';
+
 import 'babel-polyfill';
 
-const Root = () => (
+const Root = ({Router, location, context, store}) => (
   <Provider store={store}>
-    <PersistGate loading={<p>Loading...</p>} persistor={persistor}>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </PersistGate>
+    <Router location={location} context={context}>
+      <App />
+    </Router>
   </Provider>
 );
 

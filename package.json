@@ -6,7 +6,8 @@
   "scripts": {
     "start": "webpack-dev-server --config ./webpack.dev.js",
     "build": "webpack --config ./webpack.prod.js",
-    "ssr": "webpack --config ./webpack.prod.js",
+    "build-ssr": "webpack --config ./webpack.server.js",
+    "server": "./server.js",
     "dev-server": "nodemon server.js",
     "test": "jest --passWithNoTests --coverage --colors",
     "testUS": "jest --passWithNoTests --updateSnapshot",
@@ -53,19 +54,17 @@
     "webpack": "^4.20.2",
     "webpack-cli": "^3.1.1",
     "webpack-dev-server": "^3.1.8",
-    "webpack-merge": "^4.2.1"
+    "webpack-merge": "^4.2.1",
+    "webpack-node-externals": "^1.7.2"
   },
   "dependencies": {
-    "body-parser": "^1.18.3",
     "express": "^4.16.4",
     "lodash": "^4.17.11",
-    "mongodb": "^3.1.8",
     "react": "^16.8.5",
     "react-dom": "^16.8.5",
     "react-redux": "^5.0.7",
     "react-router-dom": "^5.0.0",
     "redux": "^4.0.1",
-    "redux-persist": "^5.10.0",
     "redux-thunk": "^2.3.0"
   },
   "alias": {

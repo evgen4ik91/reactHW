@@ -9,7 +9,18 @@ module.exports = merge(common, {
     externals: [nodeExternals()],
     mode: 'production',
     output: {
-        filename: 'js/serverRenderer.js',
+        filename: 'serverRenderer.js',
         libraryTarget: 'commonjs2',
-    }
+    },
+    module: {
+        rules: [
+            {
+                test: /\.css$/,
+                include: /src/,
+                use: [
+                    'css-loader/locals',
+                ],
+            },
+        ],
+    },
 });

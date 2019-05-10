@@ -1,8 +1,10 @@
 import React from 'react';
 import { renderToString } from 'react-dom/server';
-import Root from './root';  
+import { StaticRouter } from 'react-router-dom';
+import Root from './root';
+import configureStore from './store';
 
-function renderHTML(html) {
+function renderHTML(html, preloadedState) {
     return `
         <!DOCTYPE html>
         <html lang="en">
@@ -16,6 +18,7 @@ function renderHTML(html) {
             </head>
             <body>
                 <div id="app">${html}</div>
+                <script>window.PRELOADED_STATE = ${JSON.stringify(preloadedState).replace(/</g, '\\u003c')}</script>
                 <script src="/bundle.js"></script>
             </body>
         </html>
@@ -24,7 +27,30 @@ function renderHTML(html) {
 
 export default function serverRenderer() {
     return (req, res) => {
-        const htmlString = renderToString(<Root/>);
-        res.send(renderHTML(htmlString));
+        const store = configureStore();
+
+        const context = {};
+
+        const root = (
+            <Root
+                context={context}
+                location={req.url}
+                Router={StaticRouter}
+                store={store}
+            />
+        );
+
+        const htmlString = renderToString(root);
+        const preloadedState = store.getState();
+
+        if (context.url) {
+            res.writeHead(302, {
+                location: context.url,
+            });
+            res.end();
+            return;
+        }
+
+        res.send(renderHTML(htmlString, preloadedState));
     }
 }

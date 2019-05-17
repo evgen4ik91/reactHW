@@ -11,7 +11,9 @@
     "dev-server": "nodemon server.js",
     "test": "jest --passWithNoTests --coverage --colors",
     "testUS": "jest --passWithNoTests --updateSnapshot",
-    "cypress": "cypress open"
+    "cypress": "cypress open",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "repository": {
     "type": "git",
@@ -55,11 +57,16 @@
     "webpack-cli": "^3.1.1",
     "webpack-dev-server": "^3.1.8",
     "webpack-merge": "^4.2.1",
-    "webpack-node-externals": "^1.7.2"
+    "webpack-node-externals": "^1.7.2",
+    "@storybook/react": "^5.0.11",
+    "@storybook/addon-actions": "^5.0.11",
+    "@storybook/addon-links": "^5.0.11",
+    "@storybook/addons": "^5.0.11"
   },
   "dependencies": {
     "express": "^4.16.4",
     "lodash": "^4.17.11",
+    "next": "^8.1.0",
     "react": "^16.8.5",
     "react-dom": "^16.8.5",
     "react-redux": "^5.0.7",

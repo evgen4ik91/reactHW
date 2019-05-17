@@ -1,6 +1,7 @@
 const webpack = require('webpack');
 const merge = require('webpack-merge');
 const common = require('./webpack.config.js');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = merge(common, {
     mode: 'development',
@@ -8,7 +9,13 @@ module.exports = merge(common, {
         'react-hot-loader/patch'
     ],
     plugins: [
-        new webpack.HotModuleReplacementPlugin()
+        new HtmlWebpackPlugin({
+            inject: false,
+            hash: true,
+            template: './src/index.html',
+            filename: 'index.html'
+        }),
+        new webpack.HotModuleReplacementPlugin(), 
     ],
     devServer: {
         contentBase: './dist',

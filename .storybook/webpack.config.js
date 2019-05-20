@@ -5,14 +5,22 @@
 // IMPORTANT
 // When you add this file, we won't add the default configurations which is similar
 // to "React Create App". This only has babel loader to load JavaScript.
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
   plugins: [
-    // your custom plugins
+    new ExtractTextPlugin({filename: 'style.css'}),
   ],
   module: {
     rules: [
-      // add your custom rules.
+      {
+        test: /\.sass$/,
+        use: ExtractTextPlugin.extract(
+          {
+            fallback: 'style-loader',
+            use: ['css-loader', 'sass-loader']
+          })
+      },
     ],
   },
 };

@@ -4,16 +4,16 @@ import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { linkTo } from '@storybook/addon-links';
 
-import { Button, Welcome } from '@storybook/react/demo';
+import { MovieItem } from '../src/components/movie-item/movie-item';
 
-storiesOf('Welcome', module).add('to Storybook', () => <Welcome showApp={linkTo('Button')} />);
+import Page404 from '../src/components/page404/page404';
 
-storiesOf('Button', module)
-  .add('with text', () => <Button onClick={action('clicked')}>Hello Button</Button>)
-  .add('with some emoji', () => (
-    <Button onClick={action('clicked')}>
-      <span role="img" aria-label="so cool">
-        😀 😎 👍 💯
-      </span>
-    </Button>
-  ));
+const movie = {
+  id: 1,
+  genres: ['action', 'drama'],
+  title: 'Title',
+}
+
+storiesOf('page 404', module).add('to Storybook', () => <Page404 />);
+
+storiesOf('Movie Item', module).add('to Storybook', () => <MovieItem movie={movie} />);

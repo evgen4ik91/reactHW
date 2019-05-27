@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './movie-item.sass';
 
-import { getYear } from '../../functions';
+import { getYear } from '../../functions.js';
 
 export class MovieItem extends React.Component {
     constructor(props) {
